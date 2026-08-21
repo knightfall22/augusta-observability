@@ -23,3 +23,17 @@ General system logs are collected from both the scheduler and workers. Some logs
 ![logs linked with traces](assets/logs_linked_trace.png)
 
 ### Traces
+
+Since this is a distributed system tracing is alot more tricky to implement. I performed auto intrumentation on the HTTP and MongoDB, and implemented custom tracing. The most important component of the system the the dispatcher. Which is a module of the scheduler reponsible for distributing tasks to workers, processing task result and retrying failed tasks.
+
+I implemented custom tracing that records the flow from the scheduler to the worker, then the worker to the scheduler. I also observed the "reaper" which is background process that retries tasks that fail to schedule. Traces are linked with with their inception context, which is the context of the HTTP request that scheduled the task, as well as logs.
+
+![traces](assets/traces.png)
+
+#### Trace from dispatcher to worker
+
+![dispatcher to worker](assets/trace_snippet.png)
+
+![trace inception](assets/trace_linked_inception.png)
+
+![trace linked with logs](assets/trace_linked_logs.png)
