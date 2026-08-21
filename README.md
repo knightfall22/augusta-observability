@@ -37,3 +37,7 @@ I implemented custom tracing that records the flow from the scheduler to the wor
 ![trace inception](assets/trace_linked_inception.png)
 
 ![trace linked with logs](assets/trace_linked_logs.png)
+
+### Full dashboard
+
+![dashboard](assets/dashboard.png)
