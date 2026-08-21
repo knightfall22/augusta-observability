@@ -1,0 +1,36 @@
+namespace: observability
+
+resources:
+  - namespace.yaml
+  - grafana.yaml
+  - otel-collector.yaml
+  - prometheus.yaml
+  - loki.yaml
+  - tempo.yaml
+  # - kube-state-metrics.yaml
+
+configMapGenerator:
+  - name: otel-collector-config
+    files:
+      - configs/otel-collector-config.yaml
+  - name: prometheus-config
+    files:
+      - configs/prometheus-config.yaml
+  - name: loki-config
+    files:
+      - configs/loki-config.yaml
+  - name: tempo-config
+    files:
+      - configs/tempo-config.yaml
+  - name: grafana-datasources
+    files:
+      - configs/grafana-datasources.yaml
+  - name: grafana-env-config
+    literals:
+      - GF_AUTH_ANONYMOUS_ENABLED=false
+      - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
+
+secretGenerator:
+  - name: grafana-admin-credentials
+    envs:
+      - configs/grafana-admin-credentials.env
