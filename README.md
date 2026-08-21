@@ -20,6 +20,6 @@ Several system metrics are observed:
 General system logs are collected from both the scheduler and workers. Some logs are linked with traces to give a fuller picture of what is going on in the system.
 
 ![logs](assets/logs.png)
-![logs linked with traces](assets/logs-traces.png)
+![logs linked with traces](assets/logs_linked_trace.pngg)
 
 ### Traces
